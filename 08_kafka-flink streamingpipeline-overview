@@ -1,0 +1,37 @@
+# Kafka-Flink Streaming Pipeline Overview
+
+This project consists of three main components working together to handle sensor data streaming:
+
+## Components
+
+### 1. Producer  
+- **Purpose:** Generates and sends simulated sensor data to Kafka topics continuously.  
+- **Role:** Acts as a data source, pushing sensor readings (e.g., temperature, humidity) into Kafka.
+
+### 2. Simple Consumer  
+- **Purpose:** Reads data from Kafka topics and optionally logs or stores it.  
+- **Role:** Basic client that consumes raw data for debugging or storage without processing.
+
+### 3. Flink Job (Stream Processing Application)  
+- **Purpose:** Consumes data from Kafka and performs real-time stream processing.  
+- **Role:**  
+  - Reads sensor data like a consumer but applies complex logic:  
+    - Filters (e.g., high temperature alerts)  
+    - Aggregations and windowed computations (e.g., count alerts in last N messages)  
+    - Stateful processing and event-driven actions  
+  - Provides fault tolerance, scalability, and real-time analytics suitable for production.
+
+## Summary Table
+
+| Component       | Role              | Functionality                                      |
+|-----------------|-------------------|--------------------------------------------------|
+| Producer        | Data generation    | Sends raw sensor data to Kafka topic             |
+| Simple Consumer | Data reading      | Reads and optionally logs or stores raw data     |
+| Flink Job       | Stream processing  | Processes, filters, aggregates, and analyzes data in real time |
+
+## Why Use a Flink Job?
+
+A simple Kafka consumer only reads messages without any processing. The Flink job adds powerful real-time processing capabilities such as complex event processing, stateful computations, and scalable fault tolerance. This enables instant insights, alerts, and downstream actions based on live streaming data.
+
+---
+

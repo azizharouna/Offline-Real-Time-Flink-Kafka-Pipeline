@@ -1,4 +1,3 @@
-Voici le README.md complet mis à jour avec les sections Kafka clés, pour que tu puisses copier-coller directement :
 
 ```markdown
 # Real-Time Streaming Data Pipeline with Apache Flink & Kafka (No Cloud)

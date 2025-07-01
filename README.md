@@ -90,15 +90,23 @@ bin/kafka-server-start.sh config/server.properties
 
 ### 2. Create Kafka Topic
 
+Run the topic creation script once before starting your producer or consumer scripts.
+
 ```bash
-bin/kafka-topics.sh --create --topic sensor-data --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+python create_topic.py
 ```
+
+Check the output: it should say "Topic 'sensor-data' created successfully" or print an error if it already exists.
 
 ### 3. Run Data Generator (Producer)
 
 ```bash
 python data_generator.py
 ```
+
+> **Note:**
+> The data generator script runs indefinitely by default, continuously sending data to the Kafka topic until manually stopped (e.g., with `Ctrl+C`).
+> You can modify the script to stop after a certain number of messages or a fixed duration if desired.
 
 ### 4. Run Flink Job (Consumer & Processor)
 
